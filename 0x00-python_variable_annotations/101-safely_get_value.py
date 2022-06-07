@@ -17,7 +17,7 @@ def safely_get_value(dct: Mapping, key: Any,
 
     Returns:
         Union[Any, T]: _description_
-    """    
+    """
     if key in dct:
         return dct[key]
     else:
