@@ -2,7 +2,7 @@
 """_summary_
 """
 import csv
-import math import ceil
+from math import ceil
 from typing import List, Any, Dict
 
 
