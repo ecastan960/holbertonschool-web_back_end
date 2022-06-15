@@ -20,6 +20,7 @@ def index_range(page: int, page_size: int):
     end_index = page * page_size
     return (start_index, end_index)
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -48,7 +49,7 @@ class Server:
 
         Returns:
             List[List]: _description_
-        """   
+        """
         assert type(page) == int and page > 0
         assert type(page_size) == int and page_size > 0
         start, end = index_range(page, page_size)
