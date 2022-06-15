@@ -2,7 +2,7 @@
 """_summary_
 """
 import csv
-from math import ceil
+import math
 from typing import List, Any, Dict
 
 
@@ -70,7 +70,7 @@ class Server:
         """
 
         length_data = len(self.__dataset)
-        total_pages = ceil(length_data / page_size)
+        total_pages = math.ceil(length_data / page_size)
 
         data = self.get_page(page, page_size)
         if not data:
