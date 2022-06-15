@@ -3,7 +3,7 @@
 """
 import csv
 import math import floor
-from typing import Any, Dict, List
+from typing import List, Any, Dict
 
 
 def index_range(page: int, page_size: int):
