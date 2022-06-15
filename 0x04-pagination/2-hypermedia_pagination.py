@@ -68,12 +68,10 @@ class Server:
         Returns:
             Dict[str, Any]: _description_
         """
-        if self.__dataset:
-            length_data = len(self.__dataset)
-            total_pages = ceil(length_data / page_size)
-        else:
-            length_data = 0
-            total_pages = 0
+
+        length_data = len(self.__dataset)
+        total_pages = ceil(length_data / page_size)
+
         data = self.get_page(page, page_size)
         if not data:
             page_size = 0
