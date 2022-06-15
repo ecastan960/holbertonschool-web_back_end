@@ -68,17 +68,26 @@ class Server:
         Returns:
             Dict[str, Any]: _description_
         """
-        lSet = len(self.__dataset) if self.__dataset else 0
-        total_pages = ceil(lSet / page_size) if self.__dataset else 0
-        data = self.get_page(page, page_size)
-        if data:
-            page_size = len(data)
+        if self.__dataset:
+            lSet = len(self.__dataset)
+            total_pages = ceil(lSet / page_size)
         else:
+            lSet = 0
+            total_pages = ceil(lSet / page_size)
+        data = self.get_page(page, page_size)
+        if not data:
             page_size = 0
-        pSize = data
-        next_page = page + 1 if page + 1 < total_pages else None
-        prev_page = page - 1 if page > 1 else None,
-        return {'page_size': pSize,
+        else:
+            page_size = len(data)
+        if page + 1 < total_pages:
+            next_page = page + 1
+        else:
+            None
+        if page > 1:
+            prev_page = page - 1
+        else:
+            None
+        return {'page_size': page_size,
                 'page': page,
                 'data': data,
                 'next_page': next_page,
