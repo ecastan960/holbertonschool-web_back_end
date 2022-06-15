@@ -2,7 +2,7 @@
 """_summary_
 """
 import csv
-import math import floor
+import math import ceil
 from typing import List, Any, Dict
 
 
@@ -68,11 +68,14 @@ class Server:
         Returns:
             Dict[str, Any]: _description_
         """
-        assert type(page) == int and page > 0
-        assert type(page_size) == int and page_size > 0
-        total_pages = floor(len(self.dataset()) / page_size)
-        pSize = len(self.get_page(page, page_size))
+        lSet = len(self.__dataset) if self.__dataset else 0
+        total_pages = ceil(lSet / page_size) if self.__dataset else 0
         data = self.get_page(page, page_size)
+        if data:
+            page_size = len(data)
+        else:
+            page_size = 0
+        pSize = data
         next_page = page + 1 if page + 1 < total_pages else None
         prev_page = page - 1 if page > 1 else None,
         return {'page_size': pSize,
