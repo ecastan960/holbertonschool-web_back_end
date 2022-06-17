@@ -35,12 +35,12 @@ class LFUCache(BaseCaching):
         else:
             self.counter[key] = 1
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            first = self.first_list(self.queue)
-            if first:
+            temp = self.first_list(self.queue)
+            if temp:
                 self.queue.pop(0)
-                del self.cache_data[first]
-                del self.counter[first]
-                print("DISCARD: {}".format(first))
+                del self.counter[temp]
+                del self.cache_data[temp]
+                print("DISCARD: {}".format(temp))
         if key not in self.queue:
             self.queue.insert(0, key)
         self.last_list(key)
