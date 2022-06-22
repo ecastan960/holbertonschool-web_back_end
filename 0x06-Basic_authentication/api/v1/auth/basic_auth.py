@@ -31,8 +31,9 @@ class BasicAuth(Auth):
         value = authorization_header.split(' ')
         return value[1]
 
-    def decode_base64_authorization_header(self, 
-                                            base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header:
+                                           str) -> str:
         """_summary_
 
         Args:
@@ -40,7 +41,7 @@ class BasicAuth(Auth):
 
         Returns:
             str: _description_
-        """    
+        """
         if base64_authorization_header is None:
             return None
         if not isinstance(base64_authorization_header, str):
