@@ -19,6 +19,14 @@ class Auth():
         Returns:
             bool: _description_
         """
+        if path is None:
+            return True
+        if path[-1] != '/':
+            path += '/'
+        if excluded_paths is None or not len(excluded_paths):
+            return True
+        if path not in excluded_paths:
+            return True
         return False
 
     def authorization_header(self, request=None) -> str:
