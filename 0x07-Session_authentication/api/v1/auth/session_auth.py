@@ -79,7 +79,7 @@ class SessionAuth(Auth):
         if not user:
             return False
         try:
-            del self.user_id_by_session_id.get(session)
+            del self.user_id_by_session_id[session]
         except Exception:
             pass
         return True
