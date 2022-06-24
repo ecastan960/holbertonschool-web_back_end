@@ -32,7 +32,7 @@ def login():
     return jsonify(user.to_json()).set_cookie(SESSION_NAME, session)
 
 
-@app_views.route('/auth_session/logut', methods=['DELETE'],
+@app_views.route('/auth_session/logout', methods=['DELETE'],
                  strict_slashes=False)
 def logout():
     """_summary_
