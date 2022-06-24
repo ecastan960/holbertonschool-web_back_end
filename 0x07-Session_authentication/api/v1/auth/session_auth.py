@@ -82,5 +82,4 @@ class SessionAuth(Auth):
             del self.user_id_by_session_id.get(session)
         except Exception:
             pass
-
         return True
