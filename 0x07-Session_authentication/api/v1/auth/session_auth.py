@@ -60,3 +60,27 @@ class SessionAuth(Auth):
         if session is None:
             return None
         return User.get(self.user_id_by_session_id.get(session))
+
+    def destroy_session(self, request=None):
+        """_summary_
+
+        Args:
+            request (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
+        if request is None:
+            return False
+        session = self.session_cookie(request)
+        if session is None:
+            return False
+        user = self.user_id_by_session_id.get(session)
+        if not user:
+            return False
+        try:
+            del self.user_id_by_session_id.get(session)
+        except Exception:
+            pass
+
+        return True
