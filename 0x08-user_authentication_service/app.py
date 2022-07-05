@@ -4,7 +4,7 @@
 Returns:
     _type_: _description_
 """
-from flask import Flask, jsonify, abort, redirect
+from flask import Flask, jsonify
 
 
 app = Flask(__name__)
