@@ -40,8 +40,8 @@ class DB:
         Returns:
             User: _description_
         """
-        Session = self._session
+        DBSession = self._session
         user = User(email=email, hashed_password=hashed_password)
-        Session.add(user)
-        Session.commit()
+        DBSession.add(user)
+        DBSession.commit()
         return user
