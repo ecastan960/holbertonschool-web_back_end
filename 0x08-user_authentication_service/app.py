@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""_summary_
-
-Returns:
-    _type_: _description_
+"""app module
 """
 from flask import Flask, jsonify, abort, redirect
 from auth import Auth
@@ -16,10 +13,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def greetings():
-    """_summary_
-
-    Returns:
-        _type_: _description_
+    """greetings
     """
     return jsonify({'message': 'Bienvenue'})
 
