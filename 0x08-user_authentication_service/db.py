@@ -40,10 +40,10 @@ class DB:
             User: _description_
         """
         DBSession = self._session
-        Nuser = User(email=email, hashed_password=hashed_password)
-        DBSession.add(Nuser)
+        new_user = User(email=email, hashed_password=hashed_password)
+        DBSession.add(new_user)
         DBSession.commit()
-        return Nuser
+        return new_user
 
     def find_user_by(self, **kwargs) -> User:
         """_summary_
