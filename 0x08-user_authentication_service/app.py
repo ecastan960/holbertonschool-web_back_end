@@ -5,12 +5,15 @@ Returns:
     _type_: _description_
 """
 from flask import Flask, jsonify
+from auth import Auth
 
+
+AUTH = Auth()
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def greetings():
+def message():
     """_summary_
 
     Returns:
