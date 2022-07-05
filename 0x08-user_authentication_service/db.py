@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.orm.exc import NoResultFound
 
 from user import Base, User
 
@@ -44,4 +45,20 @@ class DB:
         user = User(email=email, hashed_password=hashed_password)
         DBSession.add(user)
         DBSession.commit()
+        return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """_summary_
+
+        Raises:
+            NoResultFound: _description_
+
+        Returns:
+            User: _description_
+        """
+        DBSession = self._session
+        query = DBSession.query(User).filter_by(**kwargs)
+        user = query.first()
+        if (user is None):
+            raise NoResultFound
         return user
