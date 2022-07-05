@@ -8,7 +8,7 @@ Base = declarative_base()
 
 
 class User(Base):
-    """_summary_
+    """User Class
 
     Returns:
         _type_: _description_
