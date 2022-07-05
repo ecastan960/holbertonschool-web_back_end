@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def message():
+def greetings():
     """_summary_
 
     Returns:
