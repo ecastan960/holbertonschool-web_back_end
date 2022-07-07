@@ -10,6 +10,7 @@ from flask_babel import Babel
 app = Flask(__name__)
 babel = Babel(app)
 
+
 @app.route('/')
 def root():
     """_summary_
@@ -18,6 +19,7 @@ def root():
         _type_: _description_
     """
     return render_template('1-index.html')
+
 
 class Config(object):
     """_summary_
