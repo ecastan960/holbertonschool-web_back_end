@@ -15,7 +15,7 @@ def root():
 
     Returns:
         _type_: _description_
-    """    
+    """
     return render_template('0-index.html')
 
 
