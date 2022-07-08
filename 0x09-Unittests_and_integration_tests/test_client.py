@@ -80,9 +80,11 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def test_public_repos(self):
         """_summary_"""
         test_class = GithubOrgClient("holberton")
-        assert True
+        self.assertEqual(test_class.public_repos(), self.expected_repos)
+        self.assertEqual(test_class.public_repos("random"), [])
 
     def test_public_repos_with_license(self):
         """_summary_"""
         test_class = GithubOrgClient("holberton")
-        assert True
+        self.assertEqual(test_class.public_repos(license="apache-2.0"),
+                         self.apache2_repos)
