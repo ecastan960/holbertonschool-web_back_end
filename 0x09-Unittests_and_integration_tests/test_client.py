@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" client unittesting Module """
+"""_summary_
+"""
 
 
 from client import GithubOrgClient
@@ -10,7 +11,7 @@ from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
-    """ GithubOrgClient unittesting class """
+    """ Summary"""
 
     @parameterized.expand([
         ("google"),
@@ -18,14 +19,14 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     @patch('client.get_json', return_value={})
     def test_org(self, org, patched):
-        """ GithubOrgClient.org unittesting """
+        """ Summary"""
 
         test_class = GithubOrgClient(org)
         self.assertEqual(test_class.org, patched.return_value)
         patched.assert_called_once()
 
     def test_public_repos_url(self):
-        """ GithubOrgClient._public_repos_url unittesting """
+        """ Summary"""
 
         with patch('client.GithubOrgClient.org',
                    new_callable=PropertyMock,
@@ -38,7 +39,7 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch('client.get_json',
            return_value={'repos_url': 'http://bigBrain.url'})
     def test_public_repos(self, first_patch):
-        """ GithubOrgClient.public_repos unittesting """
+        """ Summary"""
 
         with patch('client.GithubOrgClient._public_repos_url',
                    new_callable=PropertyMock,
@@ -55,7 +56,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "other_license"}}, "my_license", False)
     ])
     def test_has_license(self, repo, license, has_license):
-        """ GithubOrgClient.has_license unittesting """
+        """ Summary"""
 
         test_class = GithubOrgClient("BigBrain")
         self.assertEqual(test_class.has_license(repo, license),
@@ -67,11 +68,11 @@ class TestGithubOrgClient(unittest.TestCase):
     TEST_PAYLOAD
 )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """ GithubOrgClient integration testing class """
+    """ Summary"""
 
     @classmethod
     def setUpClass(cls):
-        """ GithubOrgClient integration testing patcher setup """
+        """ Summary"""
         cls.get_patcher = patch('requests.get')
         cls.mock = cls.get_patcher.start()
         cls.mock.return_value.json.side_effect = [
@@ -81,18 +82,17 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """ GithubOrgClient integration testing patcher destroy """
+        """ Summary"""
         cls.get_patcher.stop()
 
     def test_public_repos(self):
-        """ GithubOrgClient integration testing public_repos """
+        """ Summary"""
         test_class = GithubOrgClient("BigBrain")
         self.assertEqual(test_class.public_repos(), self.expected_repos)
         self.assertEqual(test_class.public_repos("random"), [])
 
     def test_public_repos_with_license(self):
-        """ GithubOrgClient integration testing public_repos with
-            a valid licence"""
+        """ Summary"""
         test_class = GithubOrgClient("BigBrain")
         self.assertEqual(test_class.public_repos(license="apache-2.0"),
                          self.apache2_repos)
