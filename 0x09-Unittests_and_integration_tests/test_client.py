@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """_summary_
 """
+
+
 import unittest
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized, parameterized_class
@@ -11,6 +13,7 @@ from urllib.error import HTTPError
 
 class TestGithubOrgClient(unittest.TestCase):
     """_summary_"""
+
     @parameterized.expand([
         ("google"),
         ("abc"),
@@ -67,6 +70,7 @@ class TestGithubOrgClient(unittest.TestCase):
 )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """_summary_"""
+
     @classmethod
     def setUpClass(cls):
         """_summary_"""
