@@ -51,7 +51,6 @@ def get_locale():
     Returns:
         _type_: _description_
     """
-    """ to determine the best match with our supported languages """
     lang = request.args.get('locale')
     configLang = app.config['LANGUAGES']
     if lang in configLang:
