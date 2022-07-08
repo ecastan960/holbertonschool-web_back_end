@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""_summary_
+"""6-app
 
 Returns:
     _type_: _description_
