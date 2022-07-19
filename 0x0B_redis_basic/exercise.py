@@ -2,6 +2,7 @@
 """Redis exercise task 0
 """
 
+
 import redis
 import uuid
 from typing import Optional, Callable, Union
@@ -12,6 +13,8 @@ class Cache:
     """
 
     def __init__(self) -> None:
+        """_summary_
+        """
         self.__redis = redis.Redis()
         self.__redis.flushdb()
 
