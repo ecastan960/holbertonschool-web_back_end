@@ -28,3 +28,47 @@ class Cache:
         key = str(uuid.uuid4())
         self.__redis.set(key, data)
         return key
+
+    def get(self, key: str,
+            fn: Optional[Callable]) -> Union[str, bytes, int]:
+        """_summary_
+
+        Args:
+            key (str): _description_
+            fn (Optional[Callable]): _description_
+
+        Returns:
+            Union[str, bytes, int]: _description_
+        """
+        data = self.__redis.get(key)
+        if fn:
+            return fn(data)
+        else:
+            return data
+
+    def get_str(self, key: str) -> str:
+        """_summary_
+
+        Args:
+            key (str): _description_
+
+        Returns:
+            str: _description_
+        """
+        return self.__redis.get(key).decode("utf-8")
+
+    def get_int(self, key: str) -> int:
+        """_summary_
+
+        Args:
+            key (str): _description_
+
+        Returns:
+            int: _description_
+        """
+        data = self.__redis.get(key)
+        try:
+            data = int(data.decode("utf-8"))
+        except:
+            data = 0
+        return data
