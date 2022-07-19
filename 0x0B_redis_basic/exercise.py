@@ -11,11 +11,11 @@ class Cache:
     """_summary_
     """
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.__redis = redis.Redis()
         self.__redis.flushdb()
 
-    def store(self, data) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """_summary_
 
         Args:
