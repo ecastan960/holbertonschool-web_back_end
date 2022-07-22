@@ -1,7 +1,7 @@
 -- Task 7
 DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
 
-delimiter / /
+
 CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT) BEGIN DECLARE avg_score FLOAT;
 
 SET
