@@ -10,7 +10,7 @@ export default class Car {
   }
 
   cloneCar() {
-    const clone = this.constructor[Symbol.species];
-    return new clone(this._brand, this._motor, this._color);
+    const Clone = this.constructor[Symbol.species];
+    return new Clone(this._brand, this._motor, this._color);
   }
 }
