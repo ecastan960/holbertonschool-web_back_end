@@ -9,7 +9,12 @@ function countStudents(path) {
       }
       const headers = data.slice(0, data.indexOf('\n')).split(',');
       let rows = data.slice(data.indexOf('\n') + 1).split('\n');
-      if (rows[-1] === undefined) rows = rows.slice(0, -1);
+      for (let i = 0; i < rows.length; i++) {
+        if (rows[i] === '') {
+          rows = rows.slice(0, i);
+          break;
+        }
+      }
       const array = rows.map((row) => {
         const values = row.split(',');
         const el = headers.reduce((object, header, index) => {
