@@ -33,7 +33,7 @@ function countStudents(path) {
     console.log(`Number of students in CS: ${countFieldCS}. ${nameCS.slice(0, -1)}`);
     console.log(`Number of students in SWE: ${countFieldSWE}. ${nameSWE.slice(0, -1)}`);
   } catch (err) {
-    throw Error('Cannot load the database');
+    throw new Error('Cannot load the database');
   }
 }
 
