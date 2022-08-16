@@ -6,6 +6,7 @@ function countStudents(path) {
       { encoding: 'utf8', flag: 'r' });
     const headers = data.slice(0, data.indexOf('\n')).split(',');
     let rows = data.slice(data.indexOf('\n') + 1).split('\n');
+    // eslint-disable-next-line
     for (let i = 0; i < rows.length; i++) {
       if (rows[i] === '') {
         rows = rows.slice(0, i);
