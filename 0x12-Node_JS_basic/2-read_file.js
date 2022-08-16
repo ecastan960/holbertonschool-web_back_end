@@ -5,7 +5,8 @@ function countStudents(path) {
     const data = fs.readFileSync(path,
       { encoding: 'utf8', flag: 'r' });
     const headers = data.slice(0, data.indexOf('\n')).split(',');
-    const rows = data.slice(data.indexOf('\n') + 1).split('\n');
+    let rows = data.slice(data.indexOf('\n') + 1).split('\n');
+    if (rows[-1] === undefined) rows = rows.slice(0, -1);
     const array = rows.map((row) => {
       const values = row.split(',');
       const el = headers.reduce((object, header, index) => {
