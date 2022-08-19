@@ -6,7 +6,7 @@ const Utils = require('./utils.js');
 const sendPaymentRequestToApi = require('./4-payment.js');
 
 describe('sendPaymentRequestToApi', () => {
-  const spy = sinon.spy(Utils, 'calculateNumber');
+  const spy = sinon.spy(console, 'log');
 
   it('validate Util function', () => {
     let utils = sinon.stub(Utils, 'calculateNumber');
