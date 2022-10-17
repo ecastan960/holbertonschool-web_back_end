@@ -89,8 +89,8 @@ class Cache:
     def __init__(self) -> None:
         """_summary_
         """
-        self.__redis = redis.Redis()
-        self.__redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     @call_history
     @count_calls
@@ -104,7 +104,7 @@ class Cache:
             str: _description_
         """
         key = str(uuid.uuid4())
-        self.__redis.set(key, data)
+        self._redis.set(key, data)
         return key
 
     def get(self, key: str,
@@ -118,7 +118,7 @@ class Cache:
         Returns:
             Union[str, bytes, int]: _description_
         """
-        data = self.__redis.get(key)
+        data = self._redis.get(key)
         if fn:
             return fn(data)
         else:
@@ -133,7 +133,7 @@ class Cache:
         Returns:
             str: _description_
         """
-        return self.__redis.get(key).decode("utf-8")
+        return self._redis.get(key).decode("utf-8")
 
     def get_int(self, key: str) -> int:
         """_summary_
