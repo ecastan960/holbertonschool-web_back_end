@@ -86,7 +86,7 @@ class Cache:
     """_summary_
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """_summary_
         """
         self.__redis = redis.Redis()
