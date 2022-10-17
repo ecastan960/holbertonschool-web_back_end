@@ -25,7 +25,7 @@ function countStudents(path) {
         }, {});
         return el;
       });
-      console.log('Number of students:', array.length);
+      console.log(`Number of students: ${array.length}`);
       let countFieldCS = 0;
       let countFieldSWE = 0;
       let nameCS = 'List:';
