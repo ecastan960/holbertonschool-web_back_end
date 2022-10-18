@@ -147,6 +147,6 @@ class Cache:
         data = self._redis.get(key)
         try:
             data = int(data.decode("utf-8"))
-        except:
+        except data:
             data = 0
         return data
