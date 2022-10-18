@@ -108,7 +108,7 @@ class Cache:
         return key
 
     def get(self, key: str,
-            fn: Optional[Callable]) -> Union[str, bytes, int]:
+            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         """_summary_
 
         Args:
@@ -144,7 +144,7 @@ class Cache:
         Returns:
             int: _description_
         """
-        data = self.__redis.get(key)
+        data = self._redis.get(key)
         try:
             data = int(data.decode("utf-8"))
         except:
